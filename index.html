@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Empty State -->
+    <div class="empty-state visible" id="emptyState">
+        <div class="empty-state-container">
+            <div class="empty-state-icon">
+                <div class="ripple-ring ring-1"></div>
+                <div class="ripple-ring ring-2"></div>
+                <div class="ripple-ring ring-3"></div>
+                <div class="icon-core">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="empty-state-title">YouTube Hub</h1>
+            <p class="empty-state-subtitle">Watch multiple videos simultaneously</p>
+            <div class="empty-state-divider"></div>
+            <p class="empty-state-text">
+                Press <kbd>Shift</kbd> or click the red line to get started
+            </p>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle Line -->
+    <div class="sidebar-toggle-line" id="sidebarToggleLine">
+        <div class="toggle-line-inner"></div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>
+                <svg viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+              YouTube Hub
+            </h2>
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <!-- URL Input -->
+            <div class="input-group">
+                <label for="urlInput">Add YouTube Video</label>
+                <div class="input-wrapper">
+                    <input type="text" id="urlInput" placeholder="Paste YouTube URL...">
+                    <button id="addVideoBtn" aria-label="Add video">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Videos Per Row Control -->
+            <div class="control-group">
+                <label>
+                    Videos Per Row
+                    <span id="videosPerRowValue">2</span>
+                </label>
+                <div class="number-input-wrapper">
+                    <button class="number-btn" id="decreasePerRow">−</button>
+                    <div class="number-display" id="videosPerRowDisplay">2</div>
+                    <button class="number-btn" id="increasePerRow">+</button>
+                </div>
+            </div>
+
+            <!-- Video Size Slider -->
+            <div class="control-group">
+                <label>
+                    Video Size
+                    <span id="videoSizeValue">100%</span>
+                </label>
+                <div class="slider-wrapper">
+                    <input type="range" id="videoSizeSlider" min="20" max="100" value="100">
+                </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Video Count -->
+            <div class="video-count">
+                Active Videos: <span id="videoCount">0</span>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-action-btn" id="clearAllBtn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
+                    Clear All
+                </button>
+                <button class="quick-action-btn" id="resetLayoutBtn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+                    </svg>
+                    Reset Layout
+                </button>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Shortcuts -->
+            <div class="shortcuts">
+                <h3>Keyboard Shortcuts</h3>
+                <div class="shortcut-item">
+                    <kbd>Shift</kbd>
+                    <span>Open/Close Menu</span>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            YouTube Hub
+        </div>
+    </aside>
+
+    <!-- Video Grid Container -->
+    <div class="video-grid-container">
+        <div class="video-grid" id="videoGrid"></div>
+    </div>
+
+    <!-- Drag Ghost Element -->
+    <div class="drag-ghost" id="dragGhost"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
