@@ -1,4 +1,4 @@
-/* --- !CSS Variables --- */
+/* --- CSS Variables --- */
 :root {
     --primary: #b01616;
     --primary-hover: #961111;
@@ -207,7 +207,7 @@ body {
 }
 
 /* =========================================================
-   SIDEBAR TOGGLE LINE
+   SIDEBAR TOGGLE LINE - ONLY VISIBLE ON HOVER
    ========================================================= */
 .sidebar-toggle-line {
     position: fixed;
@@ -231,9 +231,11 @@ body {
     border-radius: 0 3px 3px 0;
     transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(176, 22, 22, 0.5);
+    opacity: 0; /* Hidden by default */
 }
 
 .sidebar-toggle-line:hover .toggle-line-inner {
+    opacity: 1; /* Show on hover */
     width: 5px;
     background: #d41c1c;
     box-shadow: 0 0 20px rgba(176, 22, 22, 0.8),
@@ -1083,5 +1085,4 @@ body.is-dragging iframe {
 button:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-
 }
