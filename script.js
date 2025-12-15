@@ -459,12 +459,70 @@ urlInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Clear All Videos
-clearAllBtn.addEventListener('click', () => {
-    if (videoCount === 0) {
-        showToast('No videos to clear', 'error');
-        return;
+// =========================================================
+// CLEAR ALL CONFIRMATION MODAL
+// =========================================================
+function createClearAllModal() {
+    const modal = document.createElement('div');
+    modal.id = 'clearAllModal';
+    modal.className = 'clear-all-modal';
+    modal.innerHTML = `
+        <div class="clear-all-modal-content">
+            <p>Remove all videos?</p>
+            <div class="clear-all-modal-buttons">
+                <button class="confirm-btn cancel-btn" id="clearAllCancel" aria-label="Cancel">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+                <button class="confirm-btn remove-btn" id="clearAllConfirm" aria-label="Remove All">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Add event listeners
+    document.getElementById('clearAllCancel').addEventListener('click', hideClearAllConfirmation);
+    document.getElementById('clearAllConfirm').addEventListener('click', confirmClearAll);
+    
+    // Click outside to cancel
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideClearAllConfirmation();
+        }
+    });
+    
+    // Escape key to cancel
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('visible')) {
+            hideClearAllConfirmation();
+        }
+    });
+    
+    return modal;
+}
+
+function showClearAllConfirmation() {
+    let modal = document.getElementById('clearAllModal');
+    if (!modal) {
+        modal = createClearAllModal();
     }
+    modal.classList.add('visible');
+}
+
+function hideClearAllConfirmation() {
+    const modal = document.getElementById('clearAllModal');
+    if (modal) {
+        modal.classList.remove('visible');
+    }
+}
+
+function confirmClearAll() {
+    hideClearAllConfirmation();
     
     document.querySelectorAll('.video-item').forEach(item => {
         item.style.transform = 'scale(0.8)';
@@ -478,6 +536,16 @@ clearAllBtn.addEventListener('click', () => {
         updateEmptyState();
         showToast('All videos cleared', 'success');
     }, 200);
+}
+
+// Clear All Videos (updated)
+clearAllBtn.addEventListener('click', () => {
+    if (videoCount === 0) {
+        showToast('No videos to clear', 'error');
+        return;
+    }
+    
+    showClearAllConfirmation();
 });
 
 // Reset Layout

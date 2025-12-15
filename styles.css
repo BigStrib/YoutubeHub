@@ -1,4 +1,4 @@
-/*! --- CSS Variables --- */
+/* --- CSS Variables --- */
 :root {
     --primary: #b01616;
     --primary-hover: #961111;
@@ -321,6 +321,7 @@ body.sidebar-open .sidebar {
     fill: currentColor;
 }
 
+
 /* =========================================================
    SIDEBAR CONTENT - CONDENSED WITH CUSTOM SCROLLBAR
    ========================================================= */
@@ -365,6 +366,118 @@ body.sidebar-open .sidebar {
     font-size: 0.7rem;
     flex-shrink: 0;
 }
+
+
+/* =========================================================
+   CLEAR ALL CONFIRMATION MODAL
+   ========================================================= */
+.clear-all-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.clear-all-modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.clear-all-modal-content {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.clear-all-modal.visible .clear-all-modal-content {
+    transform: scale(1);
+}
+
+.clear-all-modal-content p {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.clear-all-modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.clear-all-modal-buttons .confirm-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.clear-all-modal-buttons .confirm-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: none;
+}
+
+/* Cancel Button - Green Stroke */
+.clear-all-modal-buttons .cancel-btn {
+    border: 2px solid #28a745;
+}
+
+.clear-all-modal-buttons .cancel-btn svg {
+    fill: #28a745;
+}
+
+.clear-all-modal-buttons .cancel-btn:hover {
+    background: #28a745;
+    box-shadow: 0 2px 12px rgba(40, 167, 69, 0.4);
+}
+
+.clear-all-modal-buttons .cancel-btn:hover svg {
+    fill: #ffffff;
+}
+
+/* Remove Button - Red Stroke */
+.clear-all-modal-buttons .remove-btn {
+    border: 2px solid #dc3545;
+}
+
+.clear-all-modal-buttons .remove-btn svg {
+    fill: #dc3545;
+}
+
+.clear-all-modal-buttons .remove-btn:hover {
+    background: #dc3545;
+    box-shadow: 0 2px 12px rgba(220, 53, 69, 0.4);
+}
+
+.clear-all-modal-buttons .remove-btn:hover svg {
+    fill: #ffffff;
+}
+
+.clear-all-modal-buttons .confirm-btn:active {
+    transform: scale(0.95);
+}
+
+
 
 /* =========================================================
    INPUT GROUP - CONDENSED
@@ -1444,5 +1557,4 @@ body.is-dragging iframe {
 button:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-
 }
