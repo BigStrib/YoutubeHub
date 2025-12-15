@@ -258,7 +258,7 @@ body.sidebar-open .sidebar-toggle-line {
     width: var(--sidebar-width);
     max-width: 85vw;
     height: 100vh;
-    background:#1a1a1ab0;
+    background:#0c0c0c;
     border-right: 1px solid var(--border-color);
     z-index: 10001;
     transform: translateX(-100%);

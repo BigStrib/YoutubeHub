@@ -2,6 +2,7 @@
 const sidebarToggleLine = document.getElementById('sidebarToggleLine');
 const sidebarClose = document.getElementById('sidebarClose');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
+const sidebar = document.getElementById('sidebar');
 const urlInput = document.getElementById('urlInput');
 const addVideoBtn = document.getElementById('addVideoBtn');
 const videoGrid = document.getElementById('videoGrid');
@@ -26,6 +27,31 @@ let videoSizePercent = 100;
 let isDragging = false;
 let draggedElement = null;
 let draggedVideoId = null;
+
+// Sidebar Transparency State
+let sidebarTransparencyTimeout = null;
+
+// =========================================================
+// SIDEBAR TRANSPARENCY EFFECT
+// =========================================================
+function triggerSidebarTransparency() {
+    if (!sidebar) return;
+    
+    // Clear any existing timeout
+    if (sidebarTransparencyTimeout) {
+        clearTimeout(sidebarTransparencyTimeout);
+    }
+    
+    // Make sidebar semi-transparent with smooth transition
+    sidebar.style.transition = 'opacity 0.3s ease';
+    sidebar.style.opacity = '0.5';
+    
+    // After 5 seconds, fade back to solid
+    sidebarTransparencyTimeout = setTimeout(() => {
+        sidebar.style.transition = 'opacity 0.1s ease';
+        sidebar.style.opacity = '1';
+    }, 1000);
+}
 
 // =========================================================
 // SIDEBAR FUNCTIONS
@@ -397,6 +423,7 @@ decreasePerRow.addEventListener('click', () => {
         videosPerRowDisplay.textContent = videosPerRow;
         videosPerRowValue.textContent = videosPerRow;
         updateGridLayout();
+        triggerSidebarTransparency();
     }
 });
 
@@ -406,6 +433,7 @@ increasePerRow.addEventListener('click', () => {
         videosPerRowDisplay.textContent = videosPerRow;
         videosPerRowValue.textContent = videosPerRow;
         updateGridLayout();
+        triggerSidebarTransparency();
     }
 });
 
@@ -414,6 +442,7 @@ videoSizeSlider.addEventListener('input', (e) => {
     videoSizePercent = parseInt(e.target.value);
     videoSizeValue.textContent = `${videoSizePercent}%`;
     updateGridLayout();
+    triggerSidebarTransparency();
 });
 
 // Add Video Button
