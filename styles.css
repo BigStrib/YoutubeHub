@@ -1,4 +1,4 @@
-/* --- CSS Variables! --- */
+/* --- CSS Variables --- */
 :root {
     --primary: #b01616;
     --primary-hover: #961111;
@@ -249,13 +249,14 @@ body.sidebar-open .sidebar-toggle-line {
 }
 
 /* =========================================================
-   SIDEBAR PANEL
+   SIDEBAR PANEL - IMPROVED FOR ALL SCREENS
    ========================================================= */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: var(--sidebar-width);
+    max-width: 85vw;
     height: 100vh;
     background: var(--bg-sidebar);
     border-right: 1px solid var(--border-color);
@@ -264,6 +265,7 @@ body.sidebar-open .sidebar-toggle-line {
     transition: transform var(--transition-smooth);
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.6);
 }
 
 body.sidebar-open .sidebar {
@@ -276,6 +278,7 @@ body.sidebar-open .sidebar {
     justify-content: space-between;
     padding: 20px;
     border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
 }
 
 .sidebar-header h2 {
@@ -322,6 +325,7 @@ body.sidebar-open .sidebar {
     flex: 1;
     padding: 24px 20px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar-footer {
@@ -330,6 +334,7 @@ body.sidebar-open .sidebar {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.75rem;
+    flex-shrink: 0;
 }
 
 /* =========================================================
@@ -369,6 +374,7 @@ body.sidebar-open .sidebar {
     outline: none;
     color: var(--text-primary);
     font-size: 0.9375rem;
+    min-width: 0;
 }
 
 #urlInput::placeholder {
@@ -385,6 +391,7 @@ body.sidebar-open .sidebar {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 #addVideoBtn:hover {
@@ -438,6 +445,7 @@ body.sidebar-open .sidebar {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .number-btn:hover {
@@ -558,13 +566,12 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* =========================================================
-   SIDEBAR OVERLAY
+   SIDEBAR OVERLAY - NO BLUR, LIGHTER BACKGROUND
    ========================================================= */
 .sidebar-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 10000;
     opacity: 0;
     pointer-events: none;
@@ -990,13 +997,177 @@ body.is-dragging iframe {
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE - TABLET AND SMALL DESKTOPS
+   ========================================================= */
+@media (max-width: 900px) {
+    :root {
+        --sidebar-width: 300px;
+    }
+    
+    .sidebar-content {
+        padding: 20px 16px;
+    }
+    
+    .input-group {
+        margin-bottom: 20px;
+    }
+    
+    .control-group {
+        margin-bottom: 16px;
+    }
+    
+    .sidebar-overlay {
+        background: rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE DEVICES
    ========================================================= */
 @media (max-width: 600px) {
-    .sidebar {
-        width: 100%;
+    :root {
+        --sidebar-width: 280px;
     }
-
+    
+    .sidebar {
+        width: var(--sidebar-width);
+        max-width: 80vw;
+    }
+    
+    .sidebar-overlay {
+        background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .sidebar-header {
+        padding: 16px;
+    }
+    
+    .sidebar-header h2 {
+        font-size: 1.1rem;
+        gap: 8px;
+    }
+    
+    .sidebar-header h2 svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .sidebar-close {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .sidebar-close svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .sidebar-content {
+        padding: 16px 14px;
+    }
+    
+    .sidebar-footer {
+        padding: 12px 14px;
+        font-size: 0.7rem;
+    }
+    
+    /* Compact input styling */
+    .input-group {
+        margin-bottom: 18px;
+    }
+    
+    .input-group label {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    #urlInput {
+        padding: 12px 12px;
+        font-size: 0.875rem;
+    }
+    
+    #addVideoBtn {
+        padding: 12px 14px;
+    }
+    
+    #addVideoBtn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Compact controls */
+    .control-group {
+        margin-bottom: 14px;
+    }
+    
+    .control-group label {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .number-input-wrapper {
+        gap: 8px;
+    }
+    
+    .number-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+    
+    .number-display {
+        font-size: 1.25rem;
+    }
+    
+    .video-count {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+    
+    .video-count span {
+        font-size: 1.25rem;
+    }
+    
+    /* Compact quick actions */
+    .quick-actions {
+        gap: 8px;
+        margin-top: 12px;
+    }
+    
+    .quick-action-btn {
+        padding: 10px 6px;
+        font-size: 0.7rem;
+        gap: 4px;
+    }
+    
+    .quick-action-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Compact shortcuts */
+    .sidebar-divider {
+        margin: 16px 0;
+    }
+    
+    .shortcuts h3 {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+    }
+    
+    .shortcut-item {
+        padding: 5px 0;
+        font-size: 0.75rem;
+        gap: 8px;
+    }
+    
+    .shortcut-item kbd {
+        padding: 3px 6px;
+        font-size: 0.65rem;
+        min-width: 36px;
+    }
+    
+    /* Empty state adjustments */
     .video-grid-container {
         padding: 0;
     }
@@ -1055,9 +1226,20 @@ body.is-dragging iframe {
     .delete-confirmation-buttons {
         gap: 24px;
     }
-}
-
-@media (max-width: 600px) {
+    
+    /* Toast adjustments */
+    .toast-message {
+        padding: 12px 18px;
+        font-size: 0.875rem;
+        bottom: 20px;
+        max-width: 90vw;
+    }
+    
+    .toast-message svg {
+        width: 16px;
+        height: 16px;
+    }
+    
     @keyframes rippleOut {
         0% {
             width: 48px;
@@ -1069,6 +1251,80 @@ body.is-dragging iframe {
             height: 100px;
             opacity: 0;
         }
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - VERY SMALL SCREENS
+   ========================================================= */
+@media (max-width: 400px) {
+    :root {
+        --sidebar-width: 260px;
+    }
+    
+    .sidebar {
+        width: var(--sidebar-width);
+        max-width: 75vw;
+    }
+    
+    .sidebar-header {
+        padding: 14px 12px;
+    }
+    
+    .sidebar-header h2 {
+        font-size: 1rem;
+    }
+    
+    .sidebar-header h2 svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .sidebar-content {
+        padding: 14px 12px;
+    }
+    
+    .sidebar-footer {
+        padding: 10px 12px;
+    }
+    
+    #urlInput {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    
+    #addVideoBtn {
+        padding: 10px 12px;
+    }
+    
+    .number-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .number-display {
+        font-size: 1.1rem;
+    }
+    
+    .quick-actions {
+        flex-wrap: wrap;
+    }
+    
+    .quick-action-btn {
+        flex: 1 1 45%;
+        padding: 8px 4px;
+        font-size: 0.65rem;
+    }
+    
+    .shortcut-item {
+        font-size: 0.7rem;
+    }
+    
+    .shortcut-item kbd {
+        padding: 2px 5px;
+        font-size: 0.6rem;
+        min-width: 32px;
     }
 }
 
@@ -1085,5 +1341,24 @@ body.is-dragging iframe {
 button:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
+}
 
+/* =========================================================
+   SCROLLBAR STYLING FOR SIDEBAR
+   ========================================================= */
+.sidebar-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
 }
