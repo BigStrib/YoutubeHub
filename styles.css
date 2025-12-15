@@ -231,11 +231,11 @@ body {
     border-radius: 0 3px 3px 0;
     transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(176, 22, 22, 0.5);
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
 }
 
 .sidebar-toggle-line:hover .toggle-line-inner {
-    opacity: 1; /* Show on hover */
+    opacity: 1;
     width: 5px;
     background: #d41c1c;
     box-shadow: 0 0 20px rgba(176, 22, 22, 0.8),
@@ -249,7 +249,7 @@ body.sidebar-open .sidebar-toggle-line {
 }
 
 /* =========================================================
-   SIDEBAR PANEL - IMPROVED FOR ALL SCREENS
+   SIDEBAR PANEL - CONDENSED LAYOUT
    ========================================================= */
 .sidebar {
     position: fixed;
@@ -258,7 +258,7 @@ body.sidebar-open .sidebar-toggle-line {
     width: var(--sidebar-width);
     max-width: 85vw;
     height: 100vh;
-    background: var(--bg-sidebar);
+    background:#1a1a1ab0;
     border-right: 1px solid var(--border-color);
     z-index: 10001;
     transform: translateX(-100%);
@@ -276,13 +276,13 @@ body.sidebar-open .sidebar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 16px 20px;
     border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
 }
 
 .sidebar-header h2 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -291,14 +291,14 @@ body.sidebar-open .sidebar {
 }
 
 .sidebar-header h2 svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     fill: var(--primary);
 }
 
 .sidebar-close {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
     border: none;
     background: transparent;
@@ -316,47 +316,76 @@ body.sidebar-open .sidebar {
 }
 
 .sidebar-close svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     fill: currentColor;
 }
 
+/* =========================================================
+   SIDEBAR CONTENT - CONDENSED WITH CUSTOM SCROLLBAR
+   ========================================================= */
 .sidebar-content {
     flex: 1;
-    padding: 24px 20px;
+    padding: 16px 20px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
+/* Custom Scrollbar - Ultra Thin & Subtle */
+.sidebar-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: rgba(176, 22, 22, 0.3);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(176, 22, 22, 0.6);
+}
+
+/* Firefox Scrollbar */
+.sidebar-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(176, 22, 22, 0.3) transparent;
+}
+
 .sidebar-footer {
-    padding: 16px 20px;
+    padding: 12px 20px;
     border-top: 1px solid var(--border-color);
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     flex-shrink: 0;
 }
 
 /* =========================================================
-   INPUT GROUP
+   INPUT GROUP - CONDENSED
    ========================================================= */
 .input-group {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .input-group label {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .input-wrapper {
     display: flex;
     background: var(--bg-input);
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     transition: all var(--transition-fast);
 }
@@ -368,12 +397,12 @@ body.sidebar-open .sidebar {
 
 #urlInput {
     flex: 1;
-    padding: 14px 16px;
+    padding: 12px 14px;
     background: transparent;
     border: none;
     outline: none;
     color: var(--text-primary);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     min-width: 0;
 }
 
@@ -382,7 +411,7 @@ body.sidebar-open .sidebar {
 }
 
 #addVideoBtn {
-    padding: 14px 18px;
+    padding: 12px 16px;
     background: var(--primary);
     border: none;
     color: var(--text-primary);
@@ -399,26 +428,26 @@ body.sidebar-open .sidebar {
 }
 
 #addVideoBtn svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     fill: currentColor;
 }
 
 /* =========================================================
-   CONTROLS GROUP
+   CONTROLS GROUP - CONDENSED
    ========================================================= */
 .control-group {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .control-group label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .control-group label span {
@@ -429,17 +458,17 @@ body.sidebar-open .sidebar {
 .number-input-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .number-btn {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: var(--bg-input);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     color: var(--text-primary);
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     cursor: pointer;
     transition: all var(--transition-fast);
     display: flex;
@@ -460,21 +489,21 @@ body.sidebar-open .sidebar {
 .number-display {
     flex: 1;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary);
 }
 
 /* Slider Styles */
 .slider-wrapper {
-    padding: 5px 0;
+    padding: 4px 0;
 }
 
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 6px;
+    height: 5px;
     background: var(--border-color);
     border-radius: 3px;
     outline: none;
@@ -484,23 +513,23 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: var(--primary);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 10px rgba(176, 22, 22, 0.4);
+    box-shadow: 0 2px 8px rgba(176, 22, 22, 0.4);
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(176, 22, 22, 0.6);
+    box-shadow: 0 4px 12px rgba(176, 22, 22, 0.6);
 }
 
 input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: var(--primary);
     border-radius: 50%;
     cursor: pointer;
@@ -508,20 +537,23 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* =========================================================
-   VIDEO COUNT
+   VIDEO COUNT - CONDENSED INLINE STYLE
    ========================================================= */
 .video-count {
     background: var(--bg-input);
     border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-    font-size: 0.9375rem;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .video-count span {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary);
 }
@@ -529,39 +561,39 @@ input[type="range"]::-moz-range-thumb {
 .sidebar-divider {
     height: 1px;
     background: var(--border-color);
-    margin: 24px 0;
+    margin: 16px 0;
 }
 
 /* =========================================================
-   SHORTCUTS SECTION
+   SHORTCUTS SECTION - CONDENSED INLINE
    ========================================================= */
 .shortcuts h3 {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .shortcut-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px 0;
+    gap: 10px;
+    padding: 5px 0;
     color: var(--text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
 }
 
 .shortcut-item kbd {
     background: var(--bg-input);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 4px 10px;
+    border-radius: 5px;
+    padding: 3px 8px;
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-primary);
-    min-width: 50px;
+    min-width: 44px;
     text-align: center;
 }
 
@@ -594,9 +626,9 @@ body.sidebar-open .sidebar-overlay {
     background: var(--bg-sidebar);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 0.9375rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.875rem;
     font-weight: 500;
     z-index: 20000;
     display: flex;
@@ -607,8 +639,8 @@ body.sidebar-open .sidebar-overlay {
 }
 
 .toast-message svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 }
 
 .toast-message.success svg {
@@ -634,28 +666,28 @@ body.sidebar-open .sidebar-overlay {
 }
 
 /* =========================================================
-   QUICK ACTIONS
+   QUICK ACTIONS - CONDENSED HORIZONTAL
    ========================================================= */
 .quick-actions {
     display: flex;
-    gap: 10px;
-    margin-top: 16px;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 .quick-action-btn {
     flex: 1;
-    padding: 12px;
+    padding: 10px 8px;
     background: var(--bg-input);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     color: var(--text-secondary);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     cursor: pointer;
     transition: all var(--transition-fast);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
 }
 
 .quick-action-btn:hover {
@@ -665,8 +697,8 @@ body.sidebar-open .sidebar-overlay {
 }
 
 .quick-action-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     fill: currentColor;
 }
 
@@ -760,7 +792,7 @@ body.sidebar-open .sidebar-overlay {
 .video-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     background: #000;
 }
 
@@ -922,26 +954,26 @@ body.is-dragging iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     text-align: center;
     padding: 20px;
 }
 
 .delete-confirmation-content p {
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     margin: 0;
 }
 
 .delete-confirmation-buttons {
     display: flex;
-    gap: 32px;
+    gap: 28px;
 }
 
 .confirm-btn {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: 2px solid;
     cursor: pointer;
@@ -953,8 +985,8 @@ body.is-dragging iframe {
 }
 
 .confirm-btn svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
 }
 
 /* Cancel Button */
@@ -1005,19 +1037,23 @@ body.is-dragging iframe {
     }
     
     .sidebar-content {
-        padding: 20px 16px;
+        padding: 14px 16px;
     }
     
     .input-group {
-        margin-bottom: 20px;
+        margin-bottom: 14px;
     }
     
     .control-group {
-        margin-bottom: 16px;
+        margin-bottom: 12px;
     }
     
     .sidebar-overlay {
         background: rgba(0, 0, 0, 0.25);
+    }
+    
+    .sidebar-divider {
+        margin: 14px 0;
     }
 }
 
@@ -1039,105 +1075,106 @@ body.is-dragging iframe {
     }
     
     .sidebar-header {
-        padding: 16px;
+        padding: 14px 16px;
     }
     
     .sidebar-header h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
         gap: 8px;
     }
     
     .sidebar-header h2 svg {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
     
     .sidebar-close {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
     }
     
     .sidebar-close svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
     }
     
     .sidebar-content {
-        padding: 16px 14px;
+        padding: 12px 14px;
     }
     
     .sidebar-footer {
-        padding: 12px 14px;
-        font-size: 0.7rem;
+        padding: 10px 14px;
+        font-size: 0.65rem;
     }
     
     /* Compact input styling */
     .input-group {
-        margin-bottom: 18px;
+        margin-bottom: 12px;
     }
     
     .input-group label {
-        font-size: 0.8rem;
-        margin-bottom: 6px;
+        font-size: 0.75rem;
+        margin-bottom: 5px;
     }
     
     #urlInput {
-        padding: 12px 12px;
-        font-size: 0.875rem;
+        padding: 10px 12px;
+        font-size: 0.8rem;
     }
     
     #addVideoBtn {
-        padding: 12px 14px;
+        padding: 10px 14px;
     }
     
     #addVideoBtn svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
     }
     
     /* Compact controls */
     .control-group {
-        margin-bottom: 14px;
+        margin-bottom: 10px;
     }
     
     .control-group label {
-        font-size: 0.8rem;
-        margin-bottom: 8px;
+        font-size: 0.75rem;
+        margin-bottom: 6px;
     }
     
     .number-input-wrapper {
-        gap: 8px;
+        gap: 6px;
     }
     
     .number-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
     
     .number-display {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
     
     .video-count {
-        padding: 12px;
-        font-size: 0.8rem;
+        padding: 10px 12px;
+        font-size: 0.75rem;
+        gap: 6px;
     }
     
     .video-count span {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
     
     /* Compact quick actions */
     .quick-actions {
-        gap: 8px;
-        margin-top: 12px;
+        gap: 6px;
+        margin-top: 10px;
     }
     
     .quick-action-btn {
-        padding: 10px 6px;
-        font-size: 0.7rem;
-        gap: 4px;
+        padding: 8px 6px;
+        font-size: 0.65rem;
+        gap: 3px;
     }
     
     .quick-action-btn svg {
@@ -1147,23 +1184,23 @@ body.is-dragging iframe {
     
     /* Compact shortcuts */
     .sidebar-divider {
-        margin: 16px 0;
+        margin: 12px 0;
     }
     
     .shortcuts h3 {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         margin-bottom: 8px;
     }
     
     .shortcut-item {
-        padding: 5px 0;
-        font-size: 0.75rem;
+        padding: 4px 0;
+        font-size: 0.7rem;
         gap: 8px;
     }
     
     .shortcut-item kbd {
-        padding: 3px 6px;
-        font-size: 0.65rem;
+        padding: 2px 6px;
+        font-size: 0.6rem;
         min-width: 36px;
     }
     
@@ -1210,34 +1247,39 @@ body.is-dragging iframe {
     }
 
     .confirm-btn {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
     }
     
     .confirm-btn svg {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
     
     .delete-confirmation-content p {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .delete-confirmation-buttons {
-        gap: 24px;
+        gap: 20px;
     }
     
     /* Toast adjustments */
     .toast-message {
-        padding: 12px 18px;
-        font-size: 0.875rem;
+        padding: 10px 16px;
+        font-size: 0.8rem;
         bottom: 20px;
         max-width: 90vw;
     }
     
     .toast-message svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    /* Custom scrollbar for mobile */
+    .sidebar-content::-webkit-scrollbar {
+        width: 3px;
     }
     
     @keyframes rippleOut {
@@ -1268,43 +1310,43 @@ body.is-dragging iframe {
     }
     
     .sidebar-header {
-        padding: 14px 12px;
+        padding: 12px;
     }
     
     .sidebar-header h2 {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .sidebar-header h2 svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
     
     .sidebar-content {
-        padding: 14px 12px;
+        padding: 10px 12px;
     }
     
     .sidebar-footer {
-        padding: 10px 12px;
+        padding: 8px 12px;
     }
     
     #urlInput {
-        padding: 10px;
-        font-size: 0.8rem;
+        padding: 8px 10px;
+        font-size: 0.75rem;
     }
     
     #addVideoBtn {
-        padding: 10px 12px;
+        padding: 8px 12px;
     }
     
     .number-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
     }
     
     .number-display {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .quick-actions {
@@ -1313,18 +1355,79 @@ body.is-dragging iframe {
     
     .quick-action-btn {
         flex: 1 1 45%;
-        padding: 8px 4px;
-        font-size: 0.65rem;
+        padding: 6px 4px;
+        font-size: 0.6rem;
+    }
+    
+    .quick-action-btn svg {
+        width: 14px;
+        height: 14px;
     }
     
     .shortcut-item {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
     
     .shortcut-item kbd {
-        padding: 2px 5px;
-        font-size: 0.6rem;
-        min-width: 32px;
+        padding: 2px 4px;
+        font-size: 0.55rem;
+        min-width: 30px;
+    }
+    
+    .video-count {
+        padding: 8px 10px;
+        font-size: 0.7rem;
+    }
+    
+    .video-count span {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================================
+   VERY SHORT SCREENS - HIDE SHORTCUTS
+   ========================================================= */
+@media (max-height: 600px) {
+    .shortcuts {
+        display: none;
+    }
+    
+    .sidebar-divider:last-of-type {
+        display: none;
+    }
+    
+    .sidebar-content {
+        padding: 12px 16px;
+    }
+    
+    .input-group {
+        margin-bottom: 12px;
+    }
+    
+    .control-group {
+        margin-bottom: 10px;
+    }
+    
+    .sidebar-divider {
+        margin: 12px 0;
+    }
+}
+
+@media (max-height: 500px) {
+    .sidebar-header {
+        padding: 10px 16px;
+    }
+    
+    .sidebar-footer {
+        padding: 8px 16px;
+    }
+    
+    .quick-actions {
+        margin-top: 8px;
+    }
+    
+    .quick-action-btn {
+        padding: 6px;
     }
 }
 
@@ -1341,24 +1444,4 @@ body.is-dragging iframe {
 button:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-}
-
-/* =========================================================
-   SCROLLBAR STYLING FOR SIDEBAR
-   ========================================================= */
-.sidebar-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar-content::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 3px;
-}
-
-.sidebar-content::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
 }
